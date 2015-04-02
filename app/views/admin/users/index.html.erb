@@ -1,0 +1,9 @@
+<h1>Rotten Mangoes - Users</h1>
+<%= link_to "Add a User", new_admin_user_path %>
+<hr>
+<% @users.each do |user| %>
+  <h2><%= link_to "#{user.firstname} #{user.lastname}", admin_user_path(user) %></h2>
+  <h3><%= user.email %> | Admin: <%= user.admin %></h3>
+  <%= button_to "Delete User", admin_user_path(user), method: :delete %>
+  <hr>
+<% end %>
