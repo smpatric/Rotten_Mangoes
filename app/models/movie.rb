@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
   mount_uploader :poster, PosterUploader
 
   def review_average
-    reviews.sum(:rating_out_of_ten)/reviews.size unless (reviews.size).nil?
+    reviews.sum(:rating_out_of_ten)/reviews.size unless reviews.size == 0
   end
 
   protected

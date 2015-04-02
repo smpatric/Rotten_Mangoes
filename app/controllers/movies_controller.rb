@@ -1,6 +1,9 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    if params[:commit] == "Search"
+      
+    else
+      @movies = Movie.all
   end
 
   def show
