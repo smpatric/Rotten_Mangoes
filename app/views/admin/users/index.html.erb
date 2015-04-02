@@ -1,7 +1,8 @@
 <h1>Rotten Mangoes - Users</h1>
-<%= link_to "Add a User", new_user_path %>
+<%= link_to "Add a User", new_admin_user_path %>
 <hr>
 <% @users.each do |user| %>
-  <h2><%= user.firstname %> <%= user.lastname %></h2><hr>
+  <h2><%= user.firstname %> <%= user.lastname %></h2>
   <h3><%= user.email %></h3>
+  <hr>
   <% end %>
