@@ -2,7 +2,8 @@
 <%= link_to "Add a User", new_admin_user_path %>
 <hr>
 <% @users.each do |user| %>
-  <h2><%= user.firstname %> <%= user.lastname %></h2>
+  <h2><%= link_to user.firstname, admin_user_path(user) %> <%= user.lastname %></h2>
   <h3><%= user.email %></h3>
+  <%= button_to "Delete User", admin_user_path(user), method: :delete %>
   <hr>
   <% end %>
