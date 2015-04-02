@@ -1,11 +1,15 @@
 class Admin::UsersController < Admin::BaseController
 
   def index
-    @users = User.all
+    @users = User.order(:lastname).page params[:page]
   end
 
   def new
     @user = User.new
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def create
@@ -28,7 +32,7 @@ class Admin::UsersController < Admin::BaseController
   protected
 
   def user_params
-    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
+    params.require(:user).permit(:id, :email, :firstname, :lastname, :password, :password_confirmation)
   end
 
 end
