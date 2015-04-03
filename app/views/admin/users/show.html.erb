@@ -1,4 +1,5 @@
 <%= link_to "Back to all users", admin_users_path %>
 <h1>User Details</h1>
-<h2><%= @user.firstname %> <%= @user.lastname %> - <small><%= link_to "edit", edit_admin_user_path %></small></h2>
+<h2><%= @user.firstname %> <%= @user.lastname %> - <small><%= link_to "edit", edit_admin_user_path %>, <%= link_to "delete", admin_user_path(@user), method: :delete, confirm: "You sure?" %></small>
+</h2>
 <div><%= @user.email %> | Admin: <%= @user.admin %></div><hr>
