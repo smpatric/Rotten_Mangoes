@@ -1,8 +1,13 @@
 class Movie < ActiveRecord::Base
   has_many :reviews
+  
   validates :title, :director, :description, :release_date, presence: true
   validates :runtime_in_minutes, numericality: { only_integer: true }
   validate :release_date_is_in_the_future
+
+  scope :title_search, ->(title) { where('title LIKE ?', title) }
+  scope :director_search, ->(director) { where('director LIKE ?', director)}
+  
   mount_uploader :poster, PosterUploader
 
   def review_average
