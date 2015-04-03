@@ -1,12 +1,13 @@
 class MoviesController < ApplicationController
   def index
     @movies = Movie.all
-    if params[:title]
-      @movies = @movies.where('title LIKE ?', "%#{params[:title]}%")
+    # binding.pry
+    if params[:title] != ""
+      @movies = @movies.title_search("%#{params[:title]}%")
     end
     
-    if params[:director]
-      @movies = @movies.where('director LIKE ?', "%#{params[:director]}%")
+    if params[:director] != ""
+      @movies = @movies.director_search("%#{params[:director]}%")
     end
 
     if params[:duration].to_i == 1
